@@ -12,7 +12,7 @@ export default function Home() {
             <img src='../Assets/Pizza.jpg' alt='Pizza'/>
             <h2>Order some mouth-watering pizza!<br /> 
             You know you want to...</h2>
-            <button onClick={routeToForm}>Order it!</button>
+            <button id='order-pizza' onClick={routeToForm}>Order it!</button>
         </div>
     )
 }
