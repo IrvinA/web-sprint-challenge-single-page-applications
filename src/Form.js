@@ -83,5 +83,42 @@ export default function Form() {
         inputChange(name, valueToUse)
     }
 
-    
+    return (
+        <form onSubmit={onSubmit}>
+            <div className='title'>
+                <h2>Customize your pizza</h2>
+            </div>
+            
+            <div className='error'>
+                <div>{formErrors.name}</div>
+                <div>{formErrors.size}</div>
+            </div>
+
+            <div className='input'>
+                <h3>New Order</h3>
+                <label>Name
+                    <input 
+                        value={formValues.name}
+                        onChange={onChange}
+                        name='name'
+                        type='text'
+                    />
+                </label>
+                <label>Size
+                    <select 
+                        value={formValues.size}
+                        onChange={onChange}
+                        name='size'
+                    >
+                        <option value=''>- Select a size -</option>
+                        <option value='xtrasmall'>Extra Small 10in</option>
+                        <option value='small'>Small 14in</option>
+                        <option value='medium'>Medium 18in</option>
+                        <option value='large'>Large 22in</option>
+                        <option value='xtralarge'>Extra Large 26in</option>
+                    </select>
+                </label>
+            </div>
+        </form>
+    )
 }
