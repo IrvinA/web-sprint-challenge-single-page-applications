@@ -33,7 +33,6 @@ export default function Form() {
         axios.post('https://reqres.in/api/orders', newOrder)
             .then(res => {
                 console.log(res.data);
-                setFormValues(initialFormValues)
             }).catch(err => console.error(err))
     }
 
@@ -42,6 +41,46 @@ export default function Form() {
             .validate(value)
             .then(() => setFormErrors({ ...formErrors, [name]: '' }))
             .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
+    }
+
+    const inputChange = (name, value) => {
+        validate(name, value);
+        setFormValues({ ...formValues, [name]: value })
+    }
+
+    const formSubmit = () => {
+        const newOrder = {
+            name: formValues.name.trim(),
+            size: formValues.size,
+            toppings: [
+                'topping1',
+                'topping2',
+                'topping3',
+                'topping4',
+                'topping5',
+                'topping6',
+                'topping7',
+                'topping8'
+            ].filter(topping => !!formValues[topping]),
+            special: formValues.special
+        }
+        postNewOrder(newOrder);
+        setFormValues(initialFormValues);
+    }
+
+    useEffect(() => {
+        schema.isValid(formValues).then(valid => setDisabled(!valid))
+    }, [formValues])
+
+    const onSubmit = evt => {
+        evt.preventDefault()
+        formSubmit()
+    }
+
+    const onChange = evt => {
+        const { name, value, checked, type } = evt.target;
+        const valueToUse = type === "checkbox" ? checked : value;
+        inputChange(name, valueToUse)
     }
 
     
