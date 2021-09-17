@@ -85,7 +85,7 @@ export default function Form() {
 
     return (
         <form onSubmit={onSubmit}>
-            <div className='title'>
+            <div className='form title'>
                 <h2>Customize your pizza</h2>
             </div>
             
@@ -94,30 +94,112 @@ export default function Form() {
                 <div>{formErrors.size}</div>
             </div>
 
-            <div className='input'>
+            <div className='form input'>
                 <h3>New Order</h3>
-                <label>Name
-                    <input 
-                        value={formValues.name}
-                        onChange={onChange}
-                        name='name'
+                <div>
+                    <label>Name
+                        <input 
+                            value={formValues.name}
+                            onChange={onChange}
+                            name='name'
+                            type='text'
+                        />
+                    </label>
+                    <label>Size
+                        <select 
+                            value={formValues.size}
+                            onChange={onChange}
+                            name='size'
+                        >
+                            <option value=''>- Select a size -</option>
+                            <option value='xtrasmall'>Extra Small 10in</option>
+                            <option value='small'>Small 14in</option>
+                            <option value='medium'>Medium 18in</option>
+                            <option value='large'>Large 22in</option>
+                            <option value='xtralarge'>Extra Large 26in</option>
+                        </select>
+                    </label>
+                </div>
+                <div className='form meats'>
+                    <h4>Meat Toppings</h4>
+                    <label>Pepperoni
+                        <input
+                            type='checkbox'
+                            name='topping1'
+                            checked={formValues.topping1}
+                            onChange={onChange}                    
+                        />
+                    </label>
+                    <label>Sausage
+                        <input
+                            type='checkbox'
+                            name='topping2'
+                            checked={formValues.topping2}
+                            onChange={onChange}                    
+                        />
+                    </label>
+                    <label>Ham
+                        <input
+                            type='checkbox'
+                            name='topping3'
+                            checked={formValues.topping3}
+                            onChange={onChange}                    
+                        />
+                    </label>
+                    <label>Anchovies
+                        <input
+                            type='checkbox'
+                            name='topping4'
+                            checked={formValues.topping4}
+                            onChange={onChange}                    
+                        />
+                    </label>
+                </div>
+                <div className='form veggies'>
+                    <h4>Veggie Toppings</h4>
+                    <label>Red Onion
+                        <input
+                            type='checkbox'
+                            name='topping5'
+                            checked={formValues.topping5}
+                            onChange={onChange}                    
+                        />
+                    </label>
+                    <label>Olives
+                        <input
+                            type='checkbox'
+                            name='topping6'
+                            checked={formValues.topping6}
+                            onChange={onChange}                    
+                        />
+                    </label>
+                    <label>Mushrooms
+                        <input
+                            type='checkbox'
+                            name='topping7'
+                            checked={formValues.topping7}
+                            onChange={onChange}                    
+                        />
+                    </label>
+                    <label>Pineapple
+                        <input
+                            type='checkbox'
+                            name='topping8'
+                            checked={formValues.topping8}
+                            onChange={onChange}                    
+                        />
+                    </label>
+                </div>
+                <div className='form special'>
+                <label>Special instructions
+                    <input
                         type='text'
+                        name='special'
+                        checked={formValues.special}
+                        onChange={onChange}                    
                     />
                 </label>
-                <label>Size
-                    <select 
-                        value={formValues.size}
-                        onChange={onChange}
-                        name='size'
-                    >
-                        <option value=''>- Select a size -</option>
-                        <option value='xtrasmall'>Extra Small 10in</option>
-                        <option value='small'>Small 14in</option>
-                        <option value='medium'>Medium 18in</option>
-                        <option value='large'>Large 22in</option>
-                        <option value='xtralarge'>Extra Large 26in</option>
-                    </select>
-                </label>
+                </div>
             </div>
         </form>
     )
