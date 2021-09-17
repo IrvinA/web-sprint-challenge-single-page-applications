@@ -41,7 +41,7 @@ const StyledForm = styled.form`
         text-align: center;
         display: flex;
         flex-direction: column;
-        width: 30%;
+        width: 40%;
     }
     
     .input h3 {
@@ -49,7 +49,7 @@ const StyledForm = styled.form`
         font-size: 1.8rem;
         text-shadow: 1px 1px blue;
         border-bottom: 1px solid black;
-        margin: 10% 20%;
+        margin: 5% 20% 10% 20%;
     }
     
     .input div {
@@ -72,13 +72,14 @@ const StyledForm = styled.form`
     }
 
     .special{
-        margin: 15% 0;
+        margin: 10% 0;
     }
 `
 
 const initialFormValues = {
     name: '',
     size: '',
+    special: '',
     topping1: false,
     topping2: false,
     topping3: false,
@@ -86,8 +87,7 @@ const initialFormValues = {
     topping5: false,
     topping6: false,
     topping7: false,
-    topping8: false,
-    special: ''
+    topping8: false    
 }
 
 const initialFormErrors = {
@@ -122,27 +122,27 @@ export default function Form() {
     }
 
     const formSubmit = () => {
+        
         const newOrder = {
             name: formValues.name.trim(),
             size: formValues.size,
-            toppings: [
-                'topping1',
-                'topping2',
-                'topping3',
-                'topping4',
-                'topping5',
-                'topping6',
-                'topping7',
-                'topping8'
-            ].filter(topping => !!formValues[topping]),
-            special: formValues.special
+            special: formValues.special,
+            topping1: formValues.topping1,
+            topping2: formValues.topping2,
+            topping3: formValues.topping3,
+            topping4: formValues.topping4,
+            topping5: formValues.topping5,
+            topping6: formValues.topping6,
+            topping7: formValues.topping7,
+            topping8: formValues.topping8           
         }
+        
         postNewOrder(newOrder);
         setFormValues(initialFormValues);
     }
 
     useEffect(() => {
-        schema.isValid(formValues).then(valid => setDisabled(!valid))
+        schema.isValid(formValues).then(valid => {setDisabled(!valid)})
     }, [formValues])
 
     const onSubmit = evt => {
@@ -157,7 +157,7 @@ export default function Form() {
     }
 
     return (
-        <StyledForm onSubmit={onSubmit}>
+        <StyledForm id='pizza-form' onSubmit={onSubmit}>
             <div className='form title'>
                 <h2>Customize your pizza</h2>
             </div>
@@ -171,7 +171,8 @@ export default function Form() {
                 <h3>New Order</h3>
                 <div>
                     <label>Name
-                        <input 
+                        <input
+                            id='name-input' 
                             value={formValues.name}
                             onChange={onChange}
                             name='name'
@@ -179,7 +180,8 @@ export default function Form() {
                         />
                     </label>
                     <label>Size
-                        <select 
+                        <select
+                            id='size-dropdown' 
                             value={formValues.size}
                             onChange={onChange}
                             name='size'
@@ -266,14 +268,15 @@ export default function Form() {
                 <div className='form special'>
                 <label>Special instructions
                     <input
+                        id='special-text'
                         type='text'
                         name='special'
-                        checked={formValues.special}
+                        value={formValues.special}
                         onChange={onChange}                    
                     />
                 </label>
                 </div>
-                <button disabled={disabled}>Place Order</button>
+                <button id='order-button' disabled={disabled}>Place Order</button>
             </div>
         </StyledForm>
     )
