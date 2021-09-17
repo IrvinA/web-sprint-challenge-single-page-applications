@@ -11,6 +11,7 @@ const StyledNav = styled.nav`
   padding: 0 16px;
   border-bottom: 1px solid lime;
   background-color: aqua;
+  margin: 0 5%;
 
   .links {
     display: flex;

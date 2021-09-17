@@ -6,11 +6,12 @@ const StyledDiv = styled.div`
     background-image: url('https://images.unsplash.com/photo-1581873372796-635b67ca2008?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 5% 3% 5%;
     h2 {
         background: white;
         border-radius: 10px;
@@ -21,6 +22,7 @@ const StyledDiv = styled.div`
         text-shadow: 1px 1px aqua;
         border: 1px solid lime;
         font-size: 1.8rem;
+        margin-top: -10%;
     }
     button {
         margin-top: 2%;

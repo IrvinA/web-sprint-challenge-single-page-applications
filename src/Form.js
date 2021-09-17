@@ -2,6 +2,79 @@ import React, { useState, useEffect } from "react";
 import schema from './validation/formSchema';
 import * as yup from 'yup';
 import axios from "axios";
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 800px;
+    margin: 0 5% 3% 5%;
+    
+    .form {
+        background-color: white;
+        opacity: 80%;
+    }
+    
+    .title {
+        border: 1px solid lime;
+        font-weight: 800;
+        padding: 0 1%;
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        font-size: 2rem;
+        text-shadow: 1px 1px crimson;
+    }
+    
+    .error {
+        background-color: black;
+        color: red;
+        font-weight: 800;
+        font-size: 1.5rem;
+    }
+    
+    .input {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+    }
+    
+    .input h3 {
+        color: black;
+        font-size: 1.8rem;
+        text-shadow: 1px 1px blue;
+        border-bottom: 1px solid black;
+        margin: 10% 20%;
+    }
+    
+    .input div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    input {
+        height: 20px;
+        flex: 0 0 200px;
+        margin-left: 10px;
+    }
+
+    .special{
+        margin: 15% 0;
+    }
+`
 
 const initialFormValues = {
     name: '',
@@ -84,7 +157,7 @@ export default function Form() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <StyledForm onSubmit={onSubmit}>
             <div className='form title'>
                 <h2>Customize your pizza</h2>
             </div>
@@ -202,6 +275,6 @@ export default function Form() {
                 </div>
                 <button disabled={disabled}>Place Order</button>
             </div>
-        </form>
+        </StyledForm>
     )
 }
