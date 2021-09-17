@@ -10,7 +10,6 @@ const StyledNav = styled.nav`
   align-items: center;
   padding: 0 16px;
   border-bottom: 1px solid lime;
-  margin-bottom: 2%;
   background-color: aqua;
 
   .links {
